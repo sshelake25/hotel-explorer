@@ -1,0 +1,65 @@
+<div class="container">
+    <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="location">Where are you going?</label>
+                <span *ngIf="f.controls.location?.errors" class="text-danger">
+                   * Please enter location.
+                </span>
+                <input type="text" 
+                        name="location" 
+                        #location 
+                        [ngModel]="search.location" 
+                        required
+                        class="form-control"  
+                        placeholder="Enter location">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="checkin">Check-in
+                <span *ngIf="f.controls.checkin?.errors" class="text-danger">
+                    * Please select checkin date.
+                </span>
+              </label>
+              <input type="date"
+                      name="checkin" 
+                      #checkin 
+                      [ngModel]="search.checkin" 
+                      required
+                      class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="checkout">Check-out
+                  <span *ngIf="f.controls.checkout?.errors" class="text-danger">
+                      * Please select checkout date.
+                   </span>
+              </label>
+              <input type="date"  
+                      name="checkout" 
+                      #checkout 
+                      [ngModel]="search.checkout" 
+                      required
+                      class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="guests">Guests
+                  <span *ngIf="f.controls.guests?.errors" class="text-danger">
+                      * Please enter no of guests.
+                   </span>
+              </label>
+              <input type="text" 
+                      name="guests" 
+                      #guests 
+                      [ngModel]="search.guests"
+                      required
+                      class="form-control" >
+            </div>
+          </div>
+          
+          <div class="form-group col-md-12">
+              <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Search for Hotels</button>
+          </div>
+      </form>
+</div>
